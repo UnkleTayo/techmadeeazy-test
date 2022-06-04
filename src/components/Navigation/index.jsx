@@ -1,6 +1,10 @@
 import React from 'react';
 import Logo from '../../assets/logo.svg';
 import { NavLink } from 'react-router-dom';
+
+import { Heart, Search } from '../Icons';
+
+import './style.scss';
 const Navigation = () => {
   return (
     <div className="navigation">
@@ -10,10 +14,26 @@ const Navigation = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/invoices">Home</NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+              to="/"
+            >
+              <span className="span-icon">
+                <Search />
+              </span>
+              <span>Home</span>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/invoices">Invoices</NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+              to="/favorites"
+            >
+              <span className="span-icon">
+                <Heart />
+              </span>
+              <span>Favorites</span>
+            </NavLink>
           </li>
         </ul>
       </nav>

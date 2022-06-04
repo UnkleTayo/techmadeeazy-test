@@ -1,0 +1,59 @@
+.navigation {
+  padding: 60px 0;
+  width: 100%;
+  height: 100%;
+  border-right: 2px solid rgba(217, 219, 233, 1);
+
+  .logo {
+    padding: 0 40px;
+  }
+
+  nav {
+    padding: 30px 0;
+    li {
+      list-style: none;
+    }
+    a {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-family: "Poppins", sans-serif;
+      color: var(--black);
+      font-weight: 700;
+      font-size: 20px;
+
+      span {
+        display: inline-block;
+      }
+
+      .span-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          fill: #444;
+        }
+      }
+
+      &.active {
+        border-left: 5px solid var(--blue);
+        border-radius: 5px;
+        margin: 0 2px;
+
+        .span-icon {
+          background-color: var(--blue);
+          border-radius: 5px;
+          svg {
+            fill: white;
+          }
+        }
+      }
+    }
+  }
+}

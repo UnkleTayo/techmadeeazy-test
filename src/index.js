@@ -5,8 +5,8 @@ import { store } from './app/store';
 import App from './App';
 import 'normalize.css';
 import reportWebVitals from './reportWebVitals';
-import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
+import './styles/index.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
