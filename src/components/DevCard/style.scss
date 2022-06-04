@@ -1,6 +1,38 @@
 .DevCard {
   background: var(--white);
   border-radius: 10px;
+  background: #fff;
+  padding-bottom: 20px;
+  position: relative;
+
+  .reaction {
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+
+    &.unlike {
+      background: var(--gray);
+    }
+
+    &.like {
+      background: var(--white);
+    }
+
+    img {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
   img {
     width: 100%;
     height: 100%;
@@ -8,19 +40,31 @@
 
   &-info {
     // display: none;
+    padding: 0 20px;
+    padding-top: 50px;
   }
 
   &-banner {
     border-radius: 10px;
     position: relative;
+    height: 200px;
+
+    img {
+      border-radius: 10px;
+      object-fit: cover;
+    }
   }
 
   &-dp {
     height: 100px;
     width: 100px;
-    position: absolute;
     border-radius: 50%;
     box-sizing: border-box;
+    margin-top: -50px;
+    margin-left: 5px;
+    padding: 5px;
+    z-index: 400;
+
     img {
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
@@ -30,11 +74,36 @@
       height: 100%;
       border: 0;
       padding: 0;
+      object-fit: cover;
+      padding: 3px;
     }
   }
 
   &-details {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+    padding: 5px 0;
+
+    &-name {
+      color: var(--black);
+      font-weight: bold;
+      font-size: 18px;
+      padding-bottom: 5px;
+    }
+
+    &-charge {
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    &-hire {
+      a {
+        color: var(--blue);
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 18px;
+      }
+    }
   }
 }

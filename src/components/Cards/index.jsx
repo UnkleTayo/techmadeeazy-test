@@ -5,13 +5,7 @@ import DevCard from '../DevCard';
 const Cards = () => {
   return (
     <div className="cards">
-      <DevCard />
-      <DevCard />
-      <DevCard />
-      <DevCard />
-      <DevCard />
-      <DevCard />
-      <DevCard />
+      <DevCard />{' '}
     </div>
   );
 };
