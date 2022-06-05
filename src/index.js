@@ -5,19 +5,26 @@ import { store } from './app/store';
 import App from './App';
 import 'normalize.css';
 import reportWebVitals from './reportWebVitals';
+import { QueryClientProvider, QueryClient } from 'react-query';
+
 import { BrowserRouter } from 'react-router-dom';
 import './styles/index.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+// Create a client
+const queryClient = new QueryClient();
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

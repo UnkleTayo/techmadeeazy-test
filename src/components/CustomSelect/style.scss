@@ -1,0 +1,85 @@
+div.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  border: 1px solid #8692a6;
+  padding: 15px;
+  border-radius: 8px;
+  color: rgba(134, 146, 166, 1);
+}
+
+div.container {
+  width: 200px;
+}
+
+button {
+  border: 0;
+  border-radius: 4px;
+  // background: hotpink;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  span {
+    padding: 0 5px;
+  }
+  // text-align: left;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button::after {
+  position: absolute;
+  right: 6px;
+  top: 4px;
+  content: "\25B2";
+  background: transparent;
+}
+
+button.expanded::after {
+  content: "\25BC";
+}
+
+ul.options {
+  display: none;
+  list-style: none;
+  padding: 4px 0;
+  margin-top: -4px;
+  height: 150px;
+  overflow-y: auto;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
+  }
+}
+
+ul.show {
+  display: block;
+}
+
+ul.options li {
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  span {
+    padding: 0 5px;
+  }
+}
+
+ul.options li:active,
+ul.options li:focus,
+ul.options li:hover,
+ul.options li[aria-selected="true"] {
+  // background: rgba(134, 146, 166, 1);
+  cursor: pointer;
+}
