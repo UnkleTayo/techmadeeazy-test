@@ -16,7 +16,7 @@ const Cards = ({ list }) => {
         {list === 'favorite' && (
           <>
             {devList?.developer?.favoriteList.length < 1 ? (
-              <h1>No Favorites</h1>
+              <h1>No favorite developer yet</h1>
             ) : (
               devList?.developer?.favoriteList?.map((dev) => (
                 <SingleCard devDetails={dev} const key={dev._id} />
