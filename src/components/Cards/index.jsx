@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './style.scss';
-import DevCard from './../DevCard';
+import SingleCard from '../SingleCard';
 import { selectDevList } from '../../features/devs/devSlice';
 
 const Cards = ({ list }) => {
@@ -12,14 +12,14 @@ const Cards = ({ list }) => {
         {list === 'home' &&
           devList?.developer?.developerList
             ?.slice(0, 12)
-            .map((dev) => <DevCard devDetails={dev} const key={dev._id} />)}
+            .map((dev) => <SingleCard devDetails={dev} const key={dev._id} />)}
         {list === 'favorite' && (
           <>
             {devList?.developer?.favoriteList.length < 1 ? (
               <h1>No Favorites</h1>
             ) : (
               devList?.developer?.favoriteList?.map((dev) => (
-                <DevCard devDetails={dev} const key={dev._id} />
+                <SingleCard devDetails={dev} const key={dev._id} />
               ))
             )}
           </>

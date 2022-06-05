@@ -17,7 +17,7 @@ const formatter = (amt, denomination) => {
   }).format(amt);
 };
 
-const DevCard = ({ devDetails }) => {
+const SingleCard = ({ devDetails }) => {
   let { developer } = useSelector(selectDevList);
 
   developer = useMemo(() => {
@@ -82,4 +82,4 @@ const DevCard = ({ devDetails }) => {
   );
 };
 
-export default DevCard;
+export default SingleCard;
