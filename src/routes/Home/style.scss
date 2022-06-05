@@ -1,8 +1,17 @@
 .home {
   padding: 110px 50px;
 
+  @media (max-width: 500px) {
+    padding: 30px;
+  }
+
   &-title {
     margin-bottom: 60px;
+
+    @media (max-width: 500px) {
+      padding: 0;
+      margin-bottom: 20px;
+    }
     h1 {
       font-weight: 700;
     }
