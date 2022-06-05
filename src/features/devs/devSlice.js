@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const localDev = JSON.parse(localStorage.getItem('Dev-hire'));
+const selectedCurrency = JSON.parse(localStorage.getItem('Dev-Currency'));
 
 const initialState = {
   developerList: localDev || [],
-  favoriteList: localDev.filter((item) => item.isFavorite === true) || [],
+  favoriteList: localDev
+    ? localDev.filter((item) => item.isFavorite === true)
+    : [],
   currencyList: [],
-  selectedCurrency: null,
+  selectedCurrency: selectedCurrency || null,
 };
 
 export const developerSlice = createSlice({
@@ -57,6 +60,10 @@ export const developerSlice = createSlice({
 
     setExchangeCurrency: (state, action) => {
       state.selectedCurrency = action.payload;
+      localStorage.setItem(
+        'Dev-Currency',
+        JSON.stringify(state.selectedCurrency)
+      );
     },
   },
 });

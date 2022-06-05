@@ -10,7 +10,7 @@ import {
 
 import './style.scss';
 
-const formatter = (amt = '33000', denomination = 'NGN') => {
+const formatter = (amt, denomination) => {
   return new Intl.NumberFormat(`en-${denomination?.substring(0, 2)}`, {
     style: 'currency',
     currency: denomination?.toUpperCase(),

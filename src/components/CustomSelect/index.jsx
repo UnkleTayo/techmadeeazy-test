@@ -11,9 +11,13 @@ const CustomSelect = () => {
   const { developer } = useSelector(selectDevList);
   const dispatch = useDispatch();
 
+  const selectedCurrency = JSON.parse(localStorage.getItem('Dev-Currency'));
+  console.log(selectedCurrency);
+
   useEffect(() => {
-    dispatch(setExchangeCurrency(developer?.currencyList[0]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(
+      setExchangeCurrency(selectedCurrency || developer?.currencyList[0])
+    );
   }, []);
 
   const toggleOptions = () => {
@@ -79,13 +83,19 @@ const CustomSelect = () => {
         >
           <span>
             <img
-              src={developer?.currencyList[selectedOption]?.flag_url}
+              src={
+                selectedCurrency?.flag_url ||
+                developer?.currencyList[selectedOption]?.flag_url
+              }
               height={24}
               width={24}
               alt="flag"
             />
           </span>
-          <span>{developer?.currencyList[selectedOption]?.name}</span>
+          <span>
+            {selectedCurrency?.name ||
+              developer?.currencyList[selectedOption]?.name}
+          </span>
         </button>
         <ul
           className={`options ${isOptionsOpen ? 'show' : ''}`}
