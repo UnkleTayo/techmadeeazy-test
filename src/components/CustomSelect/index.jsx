@@ -18,6 +18,7 @@ const CustomSelect = () => {
     dispatch(
       setExchangeCurrency(selectedCurrency || developer?.currencyList[0])
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleOptions = () => {
