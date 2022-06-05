@@ -10,7 +10,7 @@ import Skeleton from 'react-loading-skeleton';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
-  const { isLoading: devLoading, data } = useGetDevData();
+  const { isLoading: devLoading } = useGetDevData();
   const { isLoading: currencyLoading } = useGetCurrency();
 
   const location = useLocation();

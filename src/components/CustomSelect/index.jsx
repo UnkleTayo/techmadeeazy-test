@@ -56,7 +56,7 @@ const CustomSelect = () => {
       case 'ArrowDown':
         e.preventDefault();
         setSelectedOption(
-          selectedOption == developer?.currencyList.length - 1
+          selectedOption === developer?.currencyList.length - 1
             ? 0
             : selectedOption + 1
         );
@@ -99,7 +99,7 @@ const CustomSelect = () => {
               key={option?.name}
               id={option}
               role="option"
-              aria-selected={selectedOption == index}
+              aria-selected={selectedOption === index}
               tabIndex={0}
               onKeyDown={handleKeyDown(index)}
               onClick={() => {

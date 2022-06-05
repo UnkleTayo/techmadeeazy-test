@@ -10,10 +10,9 @@ const Home = () => {
       <div className="home">
         <div className="home-title">
           <h1>Hire Top Developers</h1>
-
-          <div className="home-cards">
-            <Cards list={'home'} />
-          </div>
+        </div>
+        <div className="home-cards">
+          <Cards list={'home'} />
         </div>
       </div>
     </AnimatedPage>

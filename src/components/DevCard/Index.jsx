@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Fav from '../../assets/fav.svg';
 import UnFav from '../../assets/unfav.svg';
@@ -18,7 +18,6 @@ const formatter = (amt = '33000', denomination = 'NGN') => {
 };
 
 const DevCard = ({ devDetails }) => {
-  const [fav, setFav] = useState(false);
   let { developer } = useSelector(selectDevList);
 
   developer = useMemo(() => {
@@ -34,14 +33,6 @@ const DevCard = ({ devDetails }) => {
   }, [devDetails]);
 
   const dispatch = useDispatch();
-
-  const handleFav = (cardInfo) => {
-    if (!cardInfo.isFavorite) {
-      dispatch(handleLike(cardInfo._id));
-    } else {
-      dispatch(handleUnlike(cardInfo._id));
-    }
-  };
 
   if (!developer.selectedCurrency) {
     <h1>ladjgg</h1>;

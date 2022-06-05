@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { selectDevList } from '../../features/devs/devSlice';
 import CustomSelect from '../CustomSelect';
 import Navigation from '../Navigation';
 
 import './style.scss';
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
     <div className="layout">
       <Navigation />
@@ -20,11 +17,6 @@ const Layout = ({ children }) => {
 
           <div className="dropdown">
             <CustomSelect />
-            {/* <select value={this.state.fruit} onChange={this.handleChange}>
-              {options.map((option) => (
-                <option value={option.value}>{option.label}</option>
-              ))}
-            </select> */}
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+
+const localDev = JSON.parse(localStorage.getItem('Dev-hire'));
 
 const initialState = {
-  developerList: [],
-  favoriteList: [],
+  developerList: localDev || [],
+  favoriteList: localDev.filter((item) => item.isFavorite === true) || [],
   currencyList: [],
   selectedCurrency: null,
 };
@@ -12,7 +14,9 @@ export const developerSlice = createSlice({
   initialState,
   reducers: {
     setDevList: (state, action) => {
+      if (localDev) return;
       state.developerList = action.payload;
+      localStorage.setItem('Dev-hire', JSON.stringify(state.developerList));
     },
 
     handleLike: (state, action) => {
@@ -24,6 +28,7 @@ export const developerSlice = createSlice({
         isFavorite: true,
       };
       state.developerList[likedItem] = item;
+      localStorage.setItem('Dev-hire', JSON.stringify(state.developerList));
       state.favoriteList.push(state.developerList[likedItem]);
     },
 
@@ -38,6 +43,7 @@ export const developerSlice = createSlice({
       };
 
       state.developerList[likedItem] = item;
+      localStorage.setItem('Dev-hire', JSON.stringify(state.developerList));
       const indexInFilterList = state.favoriteList.findIndex(
         (dev) => dev._id === item._id
       );
