@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './style.scss';
-import DevCard from '../DevCard';
+import DevCard from './../DevCard';
 import { selectDevList } from '../../features/devs/devSlice';
 
 const Cards = ({ list }) => {
