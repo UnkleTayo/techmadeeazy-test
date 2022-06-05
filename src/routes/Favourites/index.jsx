@@ -1,11 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectDevList } from '../../features/devs/devSlice';
+import AnimatedPage from '../../components/AnimatePages';
+import Cards from '../../components/Cards';
 
 const Favorites = () => {
-  const devList = useSelector(selectDevList);
+  return (
+    <AnimatedPage>
+      <div className="home">
+        <div className="home-title">
+          <h1>Favorites</h1>
 
-  return <div>Favourites</div>;
+          <div className="home-cards">
+            <Cards list={'favorite'} />
+          </div>
+        </div>
+      </div>
+    </AnimatedPage>
+  );
 };
 
 export default Favorites;

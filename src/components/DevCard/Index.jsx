@@ -2,7 +2,11 @@ import React, { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Fav from '../../assets/fav.svg';
 import UnFav from '../../assets/unfav.svg';
-import { handleFavList, selectDevList } from '../../features/devs/devSlice';
+import {
+  handleLike,
+  handleUnlike,
+  selectDevList,
+} from '../../features/devs/devSlice';
 
 import './style.scss';
 
@@ -12,9 +16,14 @@ const formatter = (amt = '33000', denomination = 'NGN') => {
     currency: denomination?.toUpperCase(),
   }).format(amt);
 };
+
 const DevCard = ({ devDetails }) => {
   const [fav, setFav] = useState(false);
-  const { developer } = useSelector(selectDevList);
+  let { developer } = useSelector(selectDevList);
+
+  developer = useMemo(() => {
+    return developer;
+  }, [developer]);
 
   const coin = useMemo(() => {
     return developer.selectedCurrency;
@@ -26,8 +35,12 @@ const DevCard = ({ devDetails }) => {
 
   const dispatch = useDispatch();
 
-  const handleFav = (id) => {
-    dispatch(handleFavList(id));
+  const handleFav = (cardInfo) => {
+    if (!cardInfo.isFavorite) {
+      dispatch(handleLike(cardInfo._id));
+    } else {
+      dispatch(handleUnlike(cardInfo._id));
+    }
   };
 
   if (!developer.selectedCurrency) {
@@ -38,7 +51,11 @@ const DevCard = ({ devDetails }) => {
   return (
     <div className="DevCard">
       <div
-        onClick={() => handleFav(cardInfo._id)}
+        onClick={() => {
+          cardInfo.isFavorite
+            ? dispatch(handleUnlike(cardInfo._id))
+            : dispatch(handleLike(cardInfo._id));
+        }}
         className={`reaction ${cardInfo.isFavorite ? 'like' : 'unlike'}`}
       >
         <img src={cardInfo.isFavorite ? Fav : UnFav} alt="reaction-icon" />

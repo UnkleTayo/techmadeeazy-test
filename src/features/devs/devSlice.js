@@ -15,20 +15,34 @@ export const developerSlice = createSlice({
       state.developerList = action.payload;
     },
 
-    handleFavList: (state, action) => {
-      const itemIdx = state.developerList.find(
+    handleLike: (state, action) => {
+      let likedItem = state.developerList.findIndex(
+        (item) => item._id === action.payload
+      );
+      const item = {
+        ...state.developerList[likedItem],
+        isFavorite: true,
+      };
+      state.developerList[likedItem] = item;
+      state.favoriteList.push(state.developerList[likedItem]);
+    },
+
+    handleUnlike: (state, action) => {
+      let likedItem = state.developerList.findIndex(
         (item) => item._id === action.payload
       );
 
-      if (itemIdx.isisFavorite === false) {
-        state.favoriteList.push(itemIdx);
-      }
+      const item = {
+        ...state.developerList[likedItem],
+        isFavorite: false,
+      };
 
-      if (itemIdx.isisFavorite === true) {
-        state.favoriteList.filter((item) => item._id !== action.payload);
-      }
+      state.developerList[likedItem] = item;
+      const indexInFilterList = state.favoriteList.findIndex(
+        (dev) => dev._id === item._id
+      );
 
-      console.log(current(state.favoriteList));
+      state.favoriteList.splice(indexInFilterList, 1);
     },
 
     setCurrencyList: (state, action) => {
@@ -43,7 +57,8 @@ export const developerSlice = createSlice({
 
 export const {
   setDevList,
-  handleFavList,
+  handleLike,
+  handleUnlike,
   setCurrencyList,
   setExchangeCurrency,
 } = developerSlice.actions;

@@ -1,19 +1,22 @@
 import React from 'react';
+import AnimatedPage from '../../components/AnimatePages';
 import Cards from '../../components/Cards';
 
 import './style.scss';
 
 const Home = () => {
   return (
-    <div className="home">
-      <div className="home-title">
-        <h1>Hire Top Developers</h1>
+    <AnimatedPage>
+      <div className="home">
+        <div className="home-title">
+          <h1>Hire Top Developers</h1>
 
-        <div className="home-cards">
-          <Cards />
+          <div className="home-cards">
+            <Cards list={'home'} />
+          </div>
         </div>
       </div>
-    </div>
+    </AnimatedPage>
   );
 };
 
