@@ -12,7 +12,6 @@ const CustomSelect = () => {
   const dispatch = useDispatch();
 
   const selectedCurrency = JSON.parse(localStorage.getItem('Dev-Currency'));
-  console.log(selectedCurrency);
 
   useEffect(() => {
     dispatch(
